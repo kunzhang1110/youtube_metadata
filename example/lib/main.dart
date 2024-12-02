@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
@@ -28,7 +28,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   static const String hintText = "Paste the link here....";
-  static MetaDataModel metaData;
+  static MetaDataModel? metaData;
 
   void _fetchMetadata(String link) async {
     try {
@@ -60,16 +60,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 : Container(
                     child: Column(
                       children: [
-                        Image.network(metaData.thumbnailUrl),
+                        Image.network(metaData!.thumbnailUrl!),
                         Divider(),
-                        Text(metaData.title),
+                        Text(metaData!.title!),
                         Divider(color: Colors.transparent),
                         Text(
-                          '''channel name :  ${metaData.authorName} \n\nchannel url :${metaData.authorUrl}
+                          '''channel name :  ${metaData!.authorName} \n\nchannel url :${metaData!.authorUrl}
                           ''',
                         ),
                         Divider(color: Colors.transparent),
-                        Text('description: ${metaData.description}')
+                        Text('description: ${metaData!.description}')
                       ],
                     ),
                   ),
